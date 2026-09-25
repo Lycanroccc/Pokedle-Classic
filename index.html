@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Pokédle — Classic & National Dex</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>Pokédle <span id="pageTitle" class="muted">/ Classic</span></h1>
+        <div class="header-controls">
+            <nav class="header-buttons" aria-label="Navigation"><button id="navGame" class="theme-toggle"
+                    type="button">Classic</button><button id="navDex" class="theme-toggle" type="button">Selection /
+                    Pokédex</button></nav>
+            <div class="header-settings"><button id="langToggle" class="theme-toggle" type="button"><span
+                        id="langLabel">FR</span><span class="theme-toggle-caption"
+                        id="langCaption">Français</span></button><button id="themeToggle" class="theme-toggle"
+                    type="button"><span id="themeLabel">Reshiram</span><span class="theme-toggle-caption"
+                        id="themeCaption">Light mode</span></button></div>
+        </div>
+    </header>
+    <main>
+        <section id="dexPage">
+            <div class="mode-toggle"><button id="tabSelection" class="mode-btn active"
+                    type="button">Selection</button><button id="tabDex" class="mode-btn" type="button">Pokédex</button>
+            </div>
+            <div id="selectionPanel">
+                <p class="lead" data-i="selectionIntro"></p>
+                <div class="mode-toggle choice-mode"><button id="chooseGen" class="mode-btn active"
+                        type="button"></button><button id="chooseType" class="mode-btn" type="button"></button></div>
+                <button id="selectAll" class="theme-toggle" type="button"></button>
+                <div id="selectionOptions" class="selection-grid"></div>
+                <p id="selectionCount" class="result-count"></p><button id="confirmSelection"
+                    class="theme-toggle selection-confirm" type="button"></button>
+                <p id="selectionError" class="error" role="alert"></p>
+            </div>
+            <div id="dexPanel" hidden>
+                <p class="lead" data-i="dexIntro"></p>
+                <div class="dex-controls"><input id="dexSearch" class="search-input" type="search"
+                        autocomplete="off"><button id="shinyToggle" class="theme-toggle" type="button"></button></div>
+                <div class="filter-row"><label id="genFilterLabel" for="genFilter"></label><select
+                        id="genFilter"></select>
+                    <div class="type-filter-group"><label id="typeFilterLabel" for="typeFilter1"></label><select
+                            id="typeFilter1"></select><select id="typeFilter2"></select></div>
+                </div>
+                <div class="filter-row filter-flags"><label><input type="checkbox" id="oneType"> <span
+                            data-i="oneType"></span></label><label><input type="checkbox" id="singleStage"> <span
+                            data-i="singleStage"></span></label><label><input type="checkbox" id="regionalFilter"> <span
+                            data-i="regional"></span></label><label><input type="checkbox" id="legendFilter"> <span
+                            data-i="legendary"></span></label><label><input type="checkbox" id="mythFilter"> <span
+                            data-i="mythical"></span></label><label><input type="checkbox" id="megaFilter"> <span
+                            data-i="mega"></span></label><label><input type="checkbox" id="gmaxFilter"> <span
+                            data-i="gmax"></span></label><label id="chainLabel" hidden><input type="checkbox"
+                            id="chainFilter"> <span data-i="wholeLine"></span></label></div>
+                <p id="dexCount" class="result-count"></p>
+                <div id="dexList"></div>
+            </div>
+        </section>
+        <section id="gamePage" hidden>
+            <div class="game-tools">
+                <p id="poolLabel" class="practice-hint"></p><button id="cryToggle" class="theme-toggle cry-toggle"
+                    type="button" aria-pressed="false"></button><button id="rerollButton" class="theme-toggle"
+                    type="button" hidden>Reroll</button>
+            </div>
+            <div id="hintButtons" class="hint-buttons"><button class="hint-btn" data-hint="generation"
+                    type="button"></button><button class="hint-btn" data-hint="power" type="button"></button><button
+                    class="hint-btn" data-hint="description" type="button"></button></div>
+            <div id="hintMessage" class="fruit-hint-message"></div>
+            <div class="practice-search-wrap"><input id="guessSearch" class="search-input" autocomplete="off"
+                    role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggestions">
+                <div id="suggestions" class="suggestions-list" role="listbox"></div>
+            </div>
+            <div id="winBanner" class="win-banner"></div>
+            <div class="scroll-hint" data-i="scroll"></div>
+            <div class="guess-table-wrap">
+                <table class="guess-table">
+                    <thead>
+                        <tr id="guessHead"></tr>
+                    </thead>
+                    <tbody id="guessBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <div id="detailOverlay" class="overlay" hidden>
+        <div class="detail-card" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><button id="closeDetail"
+                class="close" aria-label="Close" type="button">✕</button>
+            <div id="detailContent"></div>
+        </div>
+    </div>
+    <div id="confirmOverlay" class="overlay" hidden>
+        <div class="confirm-card" role="alertdialog" aria-modal="true">
+            <p id="confirmText"></p>
+            <div class="confirm-actions"><button id="cancelReset" class="theme-toggle" type="button"></button><button
+                    id="acceptReset" class="theme-toggle selected-action" type="button"></button></div>
+        </div>
+    </div>
+    <script src="app.js" defer></script>
+</body>
+
+</html>
