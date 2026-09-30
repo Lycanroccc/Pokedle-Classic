@@ -13,8 +13,7 @@
         <h1>Pokédle <span id="pageTitle" class="muted">/ Classic</span></h1>
         <div class="header-controls">
             <nav class="header-buttons" aria-label="Navigation"><button id="navGame" class="theme-toggle"
-                    type="button">Classic</button><button id="navDex" class="theme-toggle" type="button">Selection /
-                    Pokédex</button></nav>
+                    type="button">Classic</button><button id="navDex" class="theme-toggle" type="button">Pokédex</button></nav>
             <div class="header-settings"><button id="langToggle" class="theme-toggle" type="button"><span
                         id="langLabel">FR</span><span class="theme-toggle-caption"
                         id="langCaption">Français</span></button><button id="themeToggle" class="theme-toggle"
@@ -23,9 +22,10 @@
         </div>
     </header>
     <main>
-        <section id="dexPage">
-            <div class="mode-toggle"><button id="tabSelection" class="mode-btn active"
-                    type="button">Selection</button><button id="tabDex" class="mode-btn" type="button">Pokédex</button>
+        <section id="classicPage">
+            <div class="mode-toggle mode-toggle-main"><button id="tabClassic" class="mode-btn"
+                    type="button">Classic</button><button id="tabSelection" class="mode-btn active" type="button">Selection</button><button
+                    id="howToButton" class="theme-toggle howto-btn" type="button" aria-label="How to play">?</button>
             </div>
             <div id="selectionPanel">
                 <p class="lead" data-i="selectionIntro"></p>
@@ -37,7 +37,34 @@
                     class="theme-toggle selection-confirm" type="button"></button>
                 <p id="selectionError" class="error" role="alert"></p>
             </div>
-            <div id="dexPanel" hidden>
+            <div id="classicPanel" hidden>
+                <div class="game-tools">
+                    <p id="poolLabel" class="practice-hint"></p><button id="cryToggle" class="theme-toggle cry-toggle"
+                        type="button" aria-pressed="false"></button><button id="rerollButton" class="theme-toggle"
+                        type="button" hidden>Reroll</button>
+                </div>
+                <div id="hintButtons" class="hint-buttons"><button class="hint-btn" data-hint="generation"
+                        type="button"></button><button class="hint-btn" data-hint="power" type="button"></button><button
+                        class="hint-btn" data-hint="description" type="button"></button></div>
+                <div id="hintMessage" class="fruit-hint-message"></div>
+                <div class="practice-search-wrap"><input id="guessSearch" class="search-input" autocomplete="off"
+                        role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggestions">
+                    <div id="suggestions" class="suggestions-list" role="listbox"></div>
+                </div>
+                <div id="winBanner" class="win-banner"></div>
+                <div class="scroll-hint" data-i="scroll"></div>
+                <div class="guess-table-wrap">
+                    <table class="guess-table">
+                        <thead>
+                            <tr id="guessHead"></tr>
+                        </thead>
+                        <tbody id="guessBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="pokedexPage" hidden>
+            <div id="dexPanel">
                 <p class="lead" data-i="dexIntro"></p>
                 <div class="dex-controls"><input id="dexSearch" class="search-input" type="search"
                         autocomplete="off"><button id="shinyToggle" class="theme-toggle" type="button"></button></div>
@@ -59,31 +86,6 @@
                 <div id="dexList"></div>
             </div>
         </section>
-        <section id="gamePage" hidden>
-            <div class="game-tools">
-                <p id="poolLabel" class="practice-hint"></p><button id="cryToggle" class="theme-toggle cry-toggle"
-                    type="button" aria-pressed="false"></button><button id="rerollButton" class="theme-toggle"
-                    type="button" hidden>Reroll</button>
-            </div>
-            <div id="hintButtons" class="hint-buttons"><button class="hint-btn" data-hint="generation"
-                    type="button"></button><button class="hint-btn" data-hint="power" type="button"></button><button
-                    class="hint-btn" data-hint="description" type="button"></button></div>
-            <div id="hintMessage" class="fruit-hint-message"></div>
-            <div class="practice-search-wrap"><input id="guessSearch" class="search-input" autocomplete="off"
-                    role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggestions">
-                <div id="suggestions" class="suggestions-list" role="listbox"></div>
-            </div>
-            <div id="winBanner" class="win-banner"></div>
-            <div class="scroll-hint" data-i="scroll"></div>
-            <div class="guess-table-wrap">
-                <table class="guess-table">
-                    <thead>
-                        <tr id="guessHead"></tr>
-                    </thead>
-                    <tbody id="guessBody"></tbody>
-                </table>
-            </div>
-        </section>
     </main>
     <div id="detailOverlay" class="overlay" hidden>
         <div class="detail-card" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><button id="closeDetail"
@@ -96,6 +98,12 @@
             <p id="confirmText"></p>
             <div class="confirm-actions"><button id="cancelReset" class="theme-toggle" type="button"></button><button
                     id="acceptReset" class="theme-toggle selected-action" type="button"></button></div>
+        </div>
+    </div>
+    <div id="howToOverlay" class="overlay" hidden>
+        <div class="detail-card howto-card" role="dialog" aria-modal="true" aria-labelledby="howToTitleEl"><button
+                id="closeHowTo" class="close" aria-label="Close" type="button">✕</button>
+            <div id="howToContent"></div>
         </div>
     </div>
     <script src="app.js" defer></script>
