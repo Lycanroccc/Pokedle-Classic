@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Pokédle — Classic & National Dex</title>
+    <link rel="icon" type="image/png" href="assets/sprites/10183.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -38,6 +39,8 @@
                 <p id="selectionError" class="error" role="alert"></p>
             </div>
             <div id="classicPanel" hidden>
+                <div id="progressInfo" class="progress-info" hidden><span id="winCountInfo" class="progress-chip" hidden></span><span
+                        id="prevTargetInfo" class="progress-chip" hidden></span></div>
                 <div class="game-tools">
                     <p id="poolLabel" class="practice-hint"></p><button id="cryToggle" class="theme-toggle cry-toggle"
                         type="button" aria-pressed="false"></button><button id="rerollButton" class="theme-toggle"
@@ -67,7 +70,8 @@
             <div id="dexPanel">
                 <p class="lead" data-i="dexIntro"></p>
                 <div class="dex-controls"><input id="dexSearch" class="search-input" type="search"
-                        autocomplete="off"><button id="shinyToggle" class="theme-toggle" type="button"></button></div>
+                        autocomplete="off"><button id="shinyToggle" class="theme-toggle" type="button"></button><button
+                        id="dexHowToButton" class="theme-toggle howto-btn" type="button" aria-label="How does this page work">?</button></div>
                 <div class="filter-row"><label id="genFilterLabel" for="genFilter"></label><select
                         id="genFilter"></select>
                     <div class="type-filter-group"><label id="typeFilterLabel" for="typeFilter1"></label><select
@@ -106,6 +110,7 @@
             <div id="howToContent"></div>
         </div>
     </div>
+    <div id="petFooter" class="pet-footer" hidden></div>
     <script src="app.js" defer></script>
 </body>
 
